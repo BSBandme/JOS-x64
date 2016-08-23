@@ -110,6 +110,11 @@ readsect(void *dst, uint32_t offset)
 {
 	// wait for disk to be ready
 	waitdisk();
+	int i;
+	for(i = 0; i < 10; i++) {
+		int j = 0;
+		j = i + 1;
+	}
 
 	outb(0x1F2, 1);		// count = 1
 	outb(0x1F3, offset);

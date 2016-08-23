@@ -31,17 +31,31 @@ KERN_SRCFILES :=	kern/entry.S \
 			lib/printfmt.c \
 			lib/readline.c \
 			lib/string.c  \
-		    kern/libdwarf_rw.c \
-		    kern/libdwarf_frame.c \
+			kern/libdwarf_rw.c \
+			kern/libdwarf_frame.c \
 			kern/libdwarf_lineno.c \
-		    kern/elf_rw.c
+			kern/libdwarf_loc.c \
+			kern/elf_rw.c
 
 
 # Only build files if they exist.
 KERN_SRCFILES := $(wildcard $(KERN_SRCFILES))
 
 # Binary program images to embed within the kernel.
-KERN_BINFILES := 
+# Binary files for LAB3
+KERN_BINFILES +=	user/hello \
+			user/buggyhello \
+			user/buggyhello2 \
+			user/evilhello \
+			user/testbss \
+			user/divzero \
+			user/breakpoint \
+			user/softint \
+			user/badsegment \
+			user/faultread \
+			user/faultreadkernel \
+			user/faultwrite \
+			user/faultwritekernel
 
 KERN_OBJFILES := $(patsubst %.c, $(OBJDIR)/%.o, $(KERN_SRCFILES))
 KERN_OBJFILES := $(patsubst %.S, $(OBJDIR)/%.o, $(KERN_OBJFILES))
